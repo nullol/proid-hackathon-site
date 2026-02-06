@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    :root {
+        --bg-page: #F8FAFC;
+        --card-bg: #FFFFFF;
+        --accent-glow: #0284C7; 
+        --border-color: #E2E8F0;
+        --text-bright: #0F172A;
+        --text-dim: #475569;
+        --divider-color: #CBD5E1;
+        --ycl-yellow: #FFD200; 
+        --ycl-black: #000000;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dim);
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-page); 
+    }
+
+    .about-container {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: var(--card-bg);
+        padding: 60px 50px;
+        border-radius: 4px;
+    }
+
+    /* Video Grid Styling */
+    .video-section-title {
+        margin-top: 80px;
+        text-align: left;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two videos per row */
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .video-card {
+        position: relative;
+        background: var(--ycl-black);
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .video-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: transform 0.5s ease, opacity 0.3s ease;
+    }
+
+    .video-card:hover img {
+        transform: scale(1.05);
+        opacity: 0.6;
+    }
+
+    .play-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--ycl-yellow);
+        font-size: 3.5rem;
+        transition: 0.3s ease;
+        z-index: 2;
+    }
+
+    .video-card:hover .play-overlay {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .video-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+    }
+
+    .video-info h4 {
+        margin: 0;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Existing Styles */
+    .featured-impact {
+        background-color: var(--ycl-black);
+        color: white;
+        padding: 60px 40px;
+        margin: 40px -50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .featured-content h4 { color: var(--ycl-yellow); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+    .pillar-item { border-left: 3px solid var(--ycl-yellow); padding-left: 20px; margin-bottom: 20px;}
+    .pillar-item h5 { margin: 0; color: white; font-size: 1.2rem; }
+    
+    h3 { color: var(--text-bright); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+    .cta-button { 
+        display: inline-block; background-color: var(--ycl-black); color: white; padding: 18px 50px; 
+        font-weight: 800; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s ease;
+    }
+    .cta-button:hover { background-color: var(--ycl-yellow); color: var(--ycl-black); }
+
+    @media (max-width: 768px) {
+        .video-grid { grid-template-columns: 1fr; }
+        .featured-impact { grid-template-columns: 1fr; margin: 40px -20px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="about-container">
+    <div class="description">
+        <h3>About the Lab</h3>
+        <p>A social innovation platform bringing together Singapore's youth to co-create solutions for <strong>youth health</strong>.</p>
+    </div>
+
+    <div class="featured-impact">
+        <div class="featured-content">
+            <h4>Featured Focus</h4>
+            <h2>Empowering Young Social Entrepreneurs</h2>
+        </div>
+        <div class="pillar-grid">
+            <div class="pillar-item"><h5>Community-Led Design</h5></div>
+            <div class="pillar-item"><h5>Clinical Validation</h5></div>
+            <div class="pillar-item"><h5>Policy Alignment</h5></div>
+        </div>
+    </div>
+
+    <div class="video-section-title">
+        <h3>Innovator Spotlights</h3>
+        <p>Watch how our 2025 cohort transformed clinical data into community impact.</p>
+    </div>
+
+    <div class="video-grid">
+        <div class="video-card">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600" alt="Demo Day">
+            <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+            <div class="video-info"><h4>2025 Grand Finals: Highlights</h4></div>
+        </div>
+
+        <div class="video-card">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600" alt="Mentorship">
+            <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+            <div class="video-info"><h4>The Power of Clinical Mentorship</h4></div>
+        </div>
+
+        <div class="video-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600" alt="Data Analysis">
+            <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+            <div class="video-info"><h4>Analyzing Youth Wellness Gaps</h4></div>
+        </div>
+
+        <div class="video-card">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600" alt="Community">
+            <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+            <div class="video-info"><h4>Voices from the Community</h4></div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 60px;">
+        <a href="#" class="cta-button">Join the 2026 Cohort</a>
+    </div>
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --ycl-yellow: #FFD200; 
+            --ycl-black: #000000;
+            --ycl-red: #E5243B;
+            --ycl-green: #009D48;
+            --ycl-blue: #0284C7;
+            --border-color: #E2E8F0;
+            --text-main: #0F172A;
+            --text-dim: #475569;
+        }
+
+        body {
+            /* Modern UI Font Stack */
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.7; /* Increased for readability */
+            font-size: 1.15rem; /* Base font size increased */
+            color: var(--text-dim);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-page); 
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            background: var(--card-bg);
+            padding: 80px 60px;
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 3.5rem; /* Massive size for UI impact */
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: var(--text-main);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .description p {
+            font-size: 1.3rem; /* Enhanced paragraph size */
+            margin-bottom: 25px;
+        }
+
+        /* --- Newsletter Section (Split UI Layout) --- */
+        .newsletter-section {
+            padding: 80px 0;
+            border-top: 2px solid var(--border-color);
+            margin-top: 60px;
+        }
+
+        .accent-bar {
+            height: 8px;
+            width: 320px;
+            display: flex;
+            margin-bottom: 40px;
+        }
+        .bar-segment { flex: 1; }
+
+        .newsletter-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-subscribe {
+            background-color: var(--ycl-black);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .btn-subscribe:hover {
+            background-color: var(--ycl-yellow);
+            color: var(--ycl-black);
+        }
+
+        /* --- Footer UI --- */
+        footer {
+            background: var(--ycl-black);
+            color: white;
+            padding: 100px 10% 50px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-logo h2 { color: white; font-size: 2.2rem; }
+        .social-icons { display: flex; gap: 25px; margin-top: 30px; }
+        .social-icons a { color: white; font-size: 1.8rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--ycl-yellow); transform: translateY(-5px); }
+
+        .footer-links h5 { color: var(--ycl-yellow); font-size: 1rem; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; text-decoration: none; margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-links a:hover { color: white; }
+
+        @media (max-width: 900px) {
+            .newsletter-container, .footer-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 2.5rem; }
+            .about-container { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="about-container">
+    <div class="description">
+        <h2>NHG Youth Lab</h2>
+        <p>A social innovation platform designed for <strong>action</strong>. We bridge the gap between youth creativity and clinical expertise to co-create the future of healthcare in Singapore.</p>
+    </div>
+
+    <div class="newsletter-section">
+        <div class="newsletter-header">
+            <h3>Youth Co:Lab Newsletter</h3>
+            <div class="accent-bar">
+                <div class="bar-segment" style="background: var(--ycl-red);"></div>
+                <div class="bar-segment" style="background: var(--ycl-yellow);"></div>
+                <div class="bar-segment" style="background: var(--ycl-green);"></div>
+                <div class="bar-segment" style="background: var(--ycl-blue);"></div>
+            </div>
+        </div>
+
+        <div class="newsletter-container">
+            <div class="subscribe-form">
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">Stay updated with our latest innovation sprints and clinical insights.</p>
+                <form>
+                    <div class="input-group">
+                        <label>Email Address *</label>
+                        <input type="email" required placeholder="name@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="Your Name">
+                    </div>
+                    <button type="submit" class="btn-subscribe">Subscribe Now</button>
+                </form>
+            </div>
+
+            <div class="newsletter-preview" style="text-align: center;">
+                <div style="background: #eee; padding: 20px; border-radius: 8px; box-shadow: 0 30px 60px -12px rgba(50,50,93,0.25);">
+                   <p style="font-weight: 800; color: #888;">[Latest Edition Preview]</p>
+                   <div style="height: 300px; background: white;"></div>
+                </div>
+                <a href="#" style="display: block; margin-top: 30px; font-weight: 800; color: var(--ycl-black); text-decoration: underline; font-size: 1.3rem;">Latest Edition</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-logo">
+            <h2>NHG Youth Lab</h2>
+            <p style="color: #94A3B8; font-size: 1.1rem; max-width: 400px;">Accelerating youth-led health innovation through community engagement and clinical rigor.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h5>Organization</h5>
+            <a href="#">About Us</a>
+            <a href="#">Impact Report</a>
+            <a href="#">Partners</a>
+        </div>
+        <div class="footer-links">
+            <h5>Get Involved</h5>
+            <a href="#">Join Cohort</a>
+            <a href="#">Mentorship</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid #334155; font-size: 1rem; color: #64748B; text-align: center;">
+        © 2026 NHG Youth Lab. All Rights Reserved.
+    </div>
+</footer>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-page: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --ycl-black: #0F172A;
+            --ycl-yellow: #FFD200;
+            --accent-glow: #0284C7;
+            --text-bright: #0F172A;
+            --text-dim: #475569;
+            --border-color: #E2E8F0;
+            --block-bg: #F1F5F9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        /* --- Footer UI --- */
+    footer {
+            background: #022538;
+            color: white;
+            padding: 100px 10% 50px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-logo h2 { color: white; font-size: 2.2rem; }
+        .social-icons { display: flex; gap: 25px; margin-top: 30px; }
+        .social-icons a { color: white; font-size: 1.8rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--ycl-yellow); transform: translateY(-5px); }
+
+        .footer-links h5 { color: var(--ycl-yellow); font-size: 1rem; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; text-decoration: none; margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-links a:hover { color: white; }
+
+        @media (max-width: 900px) {
+            .newsletter-container, .footer-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 2.5rem; }
+            .about-container { padding: 40px 20px; }
+        }
+
+    @media (min-width: 768px) {
+        .partner-grid { grid-template-columns: 1fr 1fr; }
+        .full-width { grid-column: span 2; }
+    }
+    </style>
+</head>
+<body>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-logo">
+            <h2>NHG Youth Lab</h2>
+            <p style="color: #94A3B8; font-size: 1.1rem; max-width: 400px;">
+                Accelerating youth-led health innovation through community engagement and clinical rigor.
+            </p>
+            <div class="social-icons">
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Twitter (X)"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h5>Organization</h5>
+            <a href="/about">About Us</a>
+            <a href="/about">Partners</a>
+        </div>
+        
+        <div class="footer-links">
+            <h5>Get Involved</h5>
+            <a href="#">Join Cohort</a>
+            <a href="#">Mentorship</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
+    
+    <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid #334155; font-size: 1rem; color: #64748B; text-align: center;">
+        © 2026 NHG Youth Lab. All Rights Reserved.
+    </div>
+</footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --ycl-yellow: #FFD200; 
+            --ycl-black: #000000;
+            --ycl-red: #E5243B;
+            --ycl-green: #009D48;
+            --ycl-blue: #0284C7;
+            --border-color: #E2E8F0;
+            --text-main: #0F172A;
+            --text-dim: #475569;
+        }
+
+        body {
+            /* Modern UI Font Stack */
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.7; /* Increased for readability */
+            font-size: 1.15rem; /* Base font size increased */
+            color: var(--text-dim);
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px 60px;
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 3.5rem; /* Massive size for UI impact */
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: var(--text-main);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .description p {
+            font-size: 1.3rem; /* Enhanced paragraph size */
+            margin-bottom: 25px;
+        }
+
+        /* Q&A Accordion Styling */
+        .qna-section {
+            margin-top: 60px;
+        }
+        .qna-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .qna-item[open] {
+            border-color: var(--accent-glow);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
+        }
+        summary {
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-bright);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .qna-item[open] summary::after {
+            transform: rotate(180deg);
+            color: var(--accent-glow);
+        }
+        .qna-content {
+            padding: 0 20px 20px 20px;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        /* Iframe Styling */
+        .document-viewer {
+            margin-top: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--block-bg);
+        }
+        .document-viewer iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="about-container">
+    <div class="qna-section">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <details class="qna-item">
+            <summary>What is the schedule of the event?</summary>
+            <div class="qna-content">
+                <p>The hackathon runs from <strong>June 15 to June 17, 2026</strong>. Registration opens daily at 0830hrs at the NHG Headquarters. Day 1 is focused on ideation, Day 2 on prototyping, and Day 3 concludes with the final pitching and awards ceremony.</p>
+
+                <div style="margin-top: 40px;">
+                    <h4><i class="fas fa-file-lines" style="margin-right: 10px; color: var(--accent-glow);"></i> Reference Document</h4>
+                    <p style="font-size: 0.9rem;">Please review the full Participation Guide and Code of Conduct below:</p>
+                    <div class="document-viewer">
+                        <iframe src="https://docs.google.com/document/d/e/2PACX-1vT-4Kb2n8eAeScZNcEz0t2L1tekjZPH4KHSqJNOzRtN9e3XyTt7SCMA_96Gb60htHfUj6Etye-iSdsI/pub?embedded=true" title="NHG Youth Lab Participation Guide"></iframe>
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <details class="qna-item">
+            <summary>When will I receive my certificate?</summary>
+            <div class="qna-content">
+                Digital Certificates of Participation will be emailed to all attendees within <strong>14 to 21 working days</strong> after the event. Physical certificates for winners will be presented during the Award Ceremony on Day 3.   
+            </div>
+        </details>
+
+        <details class="qna-item">
+            <summary>How will judging be conducted?</summary>
+            <div class="qna-content">
+                Judging is based on a structured rubric: 40% Clinical Impact, 30% Innovation, 20% Feasibility, and 10% Presentation. Our panel consists of representatives from <strong>NHG, NYC, and industry leaders</strong>.
+            </div>
+        </details>
+
+        
+    </div>
+</div>
+
+</body>
+</html>

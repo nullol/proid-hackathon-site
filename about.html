@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    :root {
+        --bg-page: #F8FAFC;        
+        --card-bg: #FFFFFF;        
+        --accent-glow: #0284C7;    
+        --border-color: #E2E8F0;   
+        --text-bright: #0F172A;    
+        --text-dim: #475569;       
+        --block-bg: #F1F5F9;       
+        --divider-color: #CBD5E1; /* Muted color for the separator line */
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.8;
+        color: var(--text-dim);
+        margin: 0;
+        padding: 20px;
+        background-color: transparent; 
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        padding: 60px 40px;
+    }
+
+    /* Horizontal Divider Styling */
+    hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--divider-color), rgba(0, 0, 0, 0));
+        margin: 50px 0;
+    }
+
+    /* Featured Image Banner Styling */
+    .image-container {
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        margin: 40px 0;
+        position: relative;
+        background-color: #f1f5f9;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+    .image-container:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Subtle Overlay Label */
+    .image-overlay-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(15, 23, 42, 0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    /* Header Section */
+    .hero-section {
+        text-align: center;
+        margin-bottom: 20px; /* Reduced to let the HR handle spacing */
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+        color: var(--text-bright);
+        margin: 10px 0;
+        letter-spacing: -1px;
+    }
+
+    .badge {
+        background: rgba(2, 132, 199, 0.1);
+        color: var(--accent-glow);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .partner-section {
+        margin-top: 0; /* Managed by HR */
+    }
+
+    .partner-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 30px;
+    }
+
+    .partner-card {
+        background: var(--block-bg);
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+        /* New: Flex layout for logo + text */
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .partner-logo-container {
+        flex-shrink: 0;
+        width: 100px; /* Consistent size for logos */
+        height: 100px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+    }
+
+    .partner-logo-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        /* Grayscale by default, color on hover */
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+
+    .partner-card:hover .partner-logo-container img {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    .partner-info {
+        flex-grow: 1;
+    }
+
+    @media (max-width: 600px) {
+        .partner-card {
+            flex-direction: column;
+            text-align: center;
+        }
+        .partner-card h3 { justify-content: center; }
+    }
+
+    .partner-card h3 {
+        margin: 0 0 10px 0;
+        color: var(--text-bright);
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: #E2E8F0;
+        color: var(--text-bright);
+        font-weight: 600;
+    }
+
+    h2 { 
+        color: var(--text-bright); 
+        margin-bottom: 20px; 
+        font-weight: 800;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: var(--accent-glow); 
+        color: #FFFFFF; 
+        padding: 16px 40px; 
+        text-decoration: none; 
+        border-radius: 8px; 
+        font-weight: 800; 
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background: #0369a1;
+        box-shadow: 0 8px 15px rgba(2, 132, 199, 0.3);
+        transform: translateY(-2px);
+    }
+    /* --- Footer UI --- */
+    footer {
+            background: #022538;
+            color: white;
+            padding: 100px 10% 50px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-logo h2 { color: white; font-size: 2.2rem; }
+        .social-icons { display: flex; gap: 25px; margin-top: 30px; }
+        .social-icons a { color: white; font-size: 1.8rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--ycl-yellow); transform: translateY(-5px); }
+
+        .footer-links h5 { color: var(--ycl-yellow); font-size: 1rem; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; text-decoration: none; margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-links a:hover { color: white; }
+
+        @media (max-width: 900px) {
+            .newsletter-container, .footer-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 2.5rem; }
+            .about-container { padding: 40px 20px; }
+        }
+
+    @media (min-width: 768px) {
+        .partner-grid { grid-template-columns: 1fr 1fr; }
+        .full-width { grid-column: span 2; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hero-section">
+        <span class="badge">Innovation × Healthcare</span>
+        <h1>NHG Youth Lab 2026</h1>
+        <p style="font-size: 1.15rem; max-width: 700px; margin: 0 auto; color: var(--text-dim);">
+            Empowering Singapore's youth to engineer solutions for the health challenges of tomorrow.
+        </p>
+    </div>
+    <hr><div class="description">
+        <h2>Background Information</h2>
+        <p>
+            According to recent data, youths aged 18-29 are the largest population subgroup reporting poor mental health. Goh (2023) highlighted that this group makes up <strong>25.3%</strong> of mental health cases, with high informal help-seeking behavior.
+
+            The <em>National Population Health Survey 2024</em> revealed that <strong>55% of youths</strong> lack sufficient muscle-strengthening activity, while obesity rates in the 18-28 bracket have nearly doubled from <strong>6.6% to 11.6%</strong> (Qiang, 2025). 
+        </p>
+        <p>
+            With most medical health institutions in singapore being more focused on the elderly due to the ageing society, less attention and resources have been placed on our youths. More and more Active Ageing Centers are being built and funded while youth initiatives have been pushed towards teenagers and early childhood. This leaves little community resources for young adult aged 18 to 28 to tap into when they require help.
+        </p>
+        <p>
+            The need for physical and mental wellness advocation programs like the NHG Youth Lab is more crucial than ever to ensure a sustainable, healthy future.
+        </p>
+    </div>
+
+    <hr> <div class="partner-section">
+        <h2>Our Mission</h2>
+        <p>As Singapore moves towards <strong>Healthier SG</strong>, the focus on preventive care has never been more vital. NHG Youth Lab is a national-level hackathon designed to bridge the gap between student innovation and professional healthcare delivery. We challenge participants to look beyond the screen and build tools that foster long-term physical vitality.</p>
+    </div>
+
+    <hr>
+    <div class="image-container">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcassette.sphdigital.com.sg%2Fimage%2Fstraitstimes%2Fba313601dad1c50d86a2d2cff9b6fb119d0fb9c8d12f5f5d6bfebc21047646be&f=1&nofb=1&ipt=f92dd9a8237507f7ea7e75399c2c25f9176404675cd524bc5da6a6d0f714fbea" alt="Bridging Innovation and Healthcare">
+        <div class="image-overlay-text">Talk held by SG Youth Plan</div>
+    </div>
+
+    <hr> <div class="description">
+        <h2>NHG Youth Lab</h2>
+        
+        <p>
+            In partnership with the <strong>National Healthcare Group (NHG)</strong>, this hackathon provides the tools, mentorship, and training needed to build the next generation of solutions. This hackathon involves deep youth interaction with their local communities to identify pressing needs and engineer meaningful solutions. 
+        </p>
+        <p>
+            Held around the month of June, the three day event provides crash courses on the current state of youths in Singapore, the current supports provided, and some tools participants can leverage on for more information. With a direct line of contact to NHG representatives and mentors, participants can help clarify requirements and doubts about the programme. 
+        </p>
+        <p>
+            Judges from both NYC and NHG will come in on the last day to conduct the judging rounds. The judges would judge based on 3 criterias: problem identification, solution feasibility, and creativity of the solution.
+        </p>
+    </div>
+
+    <hr><div class="description">
+        <h2>Our Partners</h2>
+    </div>
+    
+    <div class="partner-grid">
+        
+        <div class="partner-card">
+            <div class="partner-logo-container">
+                <img src="https://duckduckgo.com/i/4ce2892c2f33fb05.png" alt="NHG Logo" onerror="this.src='https://via.placeholder.com/100?text=NHG'">
+            </div>
+            <div class="partner-info">
+                <h3>National Healthcare Group <span class="tag">Clinical Lead</span></h3>
+                <p>As the primary sponsor, NHG provides participants with access to veteran clinicians and health-tech mentors.</p>
+            </div>
+        </div>
+    
+        <div class="partner-card">
+            <div class="partner-logo-container">
+                <img src="https://isomer-user-content.by.gov.sg/139/218fed0b-dfd3-408b-921d-22eee54dce86/NYC_2025_Logo_RGB.png" alt="NHGP Logo" onerror="this.src='https://via.placeholder.com/100?text=NHGP'">
+            </div>
+            <div class="partner-info">
+                <h3>National Youth Council<span class="tag">Community Partner</span></h3>
+                <p>The National Youth Council (NYC) collaborates with partners to ensure youths have opportunities to develop self-awareness and deepen community spirit.</p>
+            </div>
+        </div>
+    
+        <div class="partner-card">
+            <div class="partner-logo-container">
+                <img src="https://isomer-user-content.by.gov.sg/20/5121e63b-df38-4549-af89-5e9c6e76af3d/sg-youth-plan-logo.webp" alt="MOH Logo" onerror="this.src='https://via.placeholder.com/100?text=MOH'">
+            </div>
+            <div class="partner-info">
+                <h3>SG Youth Plan<span class="tag">Policy Oversight</span></h3>
+                <p>Guided by the <strong>SG Youth Plan</strong>, SG Youth Plan aims to aligns student projects with shaping the future of our youths, here in Singapore.</p>
+            </div>
+        </div>
+    
+        <div class="partner-card">
+            <div class="partner-logo-container">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.UTzJ9Co0XNcCeNKIUqXYsQAAAA%3Fpid%3DApi&f=1&ipt=26956dffa1a6802c3b6de71fc93fe09be13bd9ada7d69e775d72f68ac1f7430a&ipo=images" alt="NP Logo" onerror="this.src='https://via.placeholder.com/100?text=NP'">
+            </div>
+            <div class="partner-info">
+                <h3>Ngee Ann Polytechnic <span class="tag">Event Sponsor</span></h3>
+                <p>Ngee Ann Polytechnic ensures that top-tier solutions with potential profitability receive the investment and funding needed to scale.</p>
+            </div>
+        </div>
+    </div>  
+
+    <hr> <div style="text-align: center;">
+        <p style="font-weight: 500; color: var(--text-bright);">Innovation starts with an idea. Impact starts with you.</p>
+        <a href="https://forms.gle/CbXMrSMSxaMpMroB9" class="cta-button">Register for NHG Youth Lab</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-logo">
+            <h2>NHG Youth Lab</h2>
+            <p style="color: #94A3B8; font-size: 1.1rem; max-width: 400px;">Accelerating youth-led health innovation through community engagement and clinical rigor.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h5>Organization</h5>
+            <a href="#">About Us</a>
+            <a href="#">Partners</a>
+        </div>
+        <div class="footer-links">
+            <h5>Get Involved</h5>
+            <a href="#">Join Cohort</a>
+            <a href="#">Mentorship</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid #334155; font-size: 1rem; color: #64748B; text-align: center;">
+        © 2026 NHG Youth Lab. All Rights Reserved.
+    </div>
+</footer>
+</body>
+</html>

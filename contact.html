@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    :root {
+        --bg-page: #F8FAFC;        
+        --card-bg: #FFFFFF;        
+        --accent-glow: #0284C7;    
+        --border-color: #E2E8F0;   
+        --text-bright: #0F172A;    
+        --text-dim: #475569;       
+        --block-bg: #F1F5F9;       
+        --divider-color: #CBD5E1; /* Muted color for the separator line */
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.8;
+        color: var(--text-dim);
+        margin: 0;
+        padding: 20px;
+        background-color: transparent; 
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        padding: 60px 40px;
+    }
+
+    /* Horizontal Divider Styling */
+    hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--divider-color), rgba(0, 0, 0, 0));
+        margin: 50px 0;
+    }
+
+    /* Subtle Overlay Label */
+    .image-overlay-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(15, 23, 42, 0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    /* Header Section */
+    .hero-section {
+        text-align: center;
+        margin-bottom: 20px; /* Reduced to let the HR handle spacing */
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+        color: var(--text-bright);
+        margin: 10px 0;
+        letter-spacing: -1px;
+    }
+
+    .badge {
+        background: rgba(2, 132, 199, 0.1);
+        color: var(--accent-glow);
+        padding: 5px 15px;
+        margin-bottom: 40px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: #E2E8F0;
+        color: var(--text-bright);
+        font-weight: 600;
+    }
+
+    h2 { 
+        color: var(--text-bright); 
+        margin-bottom: 20px; 
+        font-weight: 800;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: var(--accent-glow); 
+        color: #FFFFFF; 
+        padding: 16px 40px; 
+        text-decoration: none; 
+        border-radius: 8px; 
+        font-weight: 800; 
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background: #0369a1;
+        box-shadow: 0 8px 15px rgba(2, 132, 199, 0.3);
+        transform: translateY(-2px);
+    }
+    /* Contact Page Specific Styles */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .contact-info-block {
+        background: var(--block-bg);
+        padding: 60px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .info-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 0;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .info-item i {
+        color: var(--accent-glow);
+        font-size: 1.5rem;
+        margin-top: 5px;
+    }
+
+    .info-text h4 {
+        margin: 0;
+        color: var(--text-bright);
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Feedback Form */
+    .feedback-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group label {
+        font-weight: 700;
+        color: var(--text-bright);
+        font-size: 0.9rem;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* Map Styling */
+    .map-container {
+        width: 100%;
+        height: 450px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- Footer UI --- */
+    footer {
+            background: #022538;
+            color: white;
+            padding: 100px 10% 50px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-logo h2 { color: white; font-size: 2.2rem; }
+        .social-icons { display: flex; gap: 25px; margin-top: 30px; }
+        .social-icons a { color: white; font-size: 1.8rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--ycl-yellow); transform: translateY(-5px); }
+
+        .footer-links h5 { color: var(--ycl-yellow); font-size: 1rem; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; text-decoration: none; margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-links a:hover { color: white; }
+
+        @media (max-width: 900px) {
+            .newsletter-container, .footer-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 2.5rem; }
+            .about-container { padding: 40px 20px; }
+        }
+
+    @media (min-width: 768px) {
+        .partner-grid { grid-template-columns: 1fr 1fr; }
+        .full-width { grid-column: span 2; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hero-section">
+        <span class="badge">Get In Touch</span>
+        <p style="font-size: 1.15rem; max-width: 700px; margin: 0 auto; color: var(--text-dim);">
+            <h1> </h1>
+            Have questions about the hackathon or want to partner with us? Reach out below.
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="contact-grid">
+        <div class="contact-left">
+            <div class="contact-info-block">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info-text">
+                        <h4>Email Us</h4>
+                        <p style="margin: 5px 0 0;">hello@nhgyouthlab.sg</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="info-text">
+                        <h4>Call Us</h4>
+                        <p style="margin: 5px 0 0;">+65 6466 6555</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="info-text">
+                        <h4>Office Location</h4>
+                        <p style="margin: 5px 0 0;">Ngee Ann Polytechnic, 535 Clementi Rd,<br>Singapore 599489</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-right">
+            <h3>Send Feedback</h3>
+            <form class="feedback-form">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Message / Feedback</label>
+                    <textarea placeholder="How can we help you?"></textarea>
+                </div>
+                <button type="submit"
+                 class="cta-button" style="width: 100%; border: none; cursor: pointer;">Submit Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8290.661938222505!2d103.7775355470449!3d1.334623779143334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da107d8eb4e359%3A0x75d2e7ffdeeb0c43!2sNgee%20Ann%20Polytechnic!5e0!3m2!1sen!2ssg!4v1768741867791!5m2!1sen!2ssg" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <hr> <div style="text-align: center;">
+        <p style="font-weight: 500; color: var(--text-bright);">Innovation starts with an idea. Impact starts with you.</p>
+        <a href="https://forms.gle/CbXMrSMSxaMpMroB9" class="cta-button">Register for NHG Youth Lab</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-logo">
+            <h2>NHG Youth Lab</h2>
+            <p style="color: #94A3B8; font-size: 1.1rem; max-width: 400px;">
+                Accelerating youth-led health innovation through community engagement and clinical rigor.
+            </p>
+            <div class="social-icons">
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Twitter (X)"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h5>Organization</h5>
+            <a href="#">About Us</a>
+            <a href="#">Partners</a>
+        </div>
+        
+        <div class="footer-links">
+            <h5>Get Involved</h5>
+            <a href="#">Join Cohort</a>
+            <a href="#">Mentorship</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    
+    <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid #334155; font-size: 1rem; color: #64748B; text-align: center;">
+        © 2026 NHG Youth Lab. All Rights Reserved.
+    </div>
+</footer>
+</body>
+</html>

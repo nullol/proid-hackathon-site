@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHG Youth Lab 2026 | Social Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-page: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --ycl-black: #0F172A;
+            --ycl-yellow: #FFD200;
+            --accent-glow: #0284C7;
+            --text-bright: #0F172A;
+            --text-dim: #475569;
+            --border-color: #E2E8F0;
+            --block-bg: #F1F5F9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto 0px auto;
+            background: var(--card-bg);
+            padding: 80px 60px 0px 60px;
+        }
+
+        h1, h2, h3 { color: var(--text-bright); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
+        h1 { font-size: 3.5rem; text-align: center; margin-bottom: 10px; }
+        h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        
+        hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--border-color), transparent); margin: 60px 0; }
+
+        .badge { display: inline-block; background: rgba(2, 132, 199, 0.1); color: var(--accent-glow); padding: 6px 16px; border-radius: 30px; font-weight: 800; font-size: 0.8rem; margin-bottom: 20px; }
+
+        .description p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .description strong {
+            color: var(--text-bright);
+            border-bottom: 2px solid var(--accent-glow);
+        }
+
+        /* Partner Grid Styling */
+        .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .partner-card { 
+            background: var(--block-bg); 
+            padding: 30px; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .partner-card:hover { transform: translateY(-5px); border-color: var(--accent-glow); background: white; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .logo-box { width: 80px; height: 80px; background: white; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 10px; }
+        .logo-box img { max-width: 100%; filter: grayscale(100%); transition: 0.3s; }
+        .partner-card:hover .logo-box img { filter: grayscale(0%); }
+
+        /* Countdown Styling */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        .countdown-item {
+            background: var(--ycl-black);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            min-width: 80px;
+        }
+        .countdown-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--ycl-yellow);
+            line-height: 1;
+        }
+        .countdown-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Rundown Timeline Styling */
+        .timeline {
+            margin-top: 40px;
+            position: relative;
+        }
+        .timeline-item {
+            padding-left: 30px;
+            border-left: 3px solid var(--ycl-yellow);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            background: var(--ycl-black);
+            border: 4px solid var(--ycl-yellow);
+            border-radius: 50%;
+        }
+        .timeline-date {
+            font-weight: 800;
+            color: var(--accent-glow);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Guest of Honor Styling */
+    .goh-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .goh-card {
+        text-align: center;
+        background: white;
+        padding: 40px 30px;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        transition: 0.3s;
+    }
+
+    .goh-card:hover {
+        border-color: var(--accent-glow);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        transform: translateY(-5px);
+    }
+
+    .goh-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 4px solid var(--block-bg);
+        padding: 5px;
+        background: white;
+    }
+
+    .goh-card h3 {
+        font-size: 1.4rem;
+        margin: 10px 0 5px 0;
+        text-transform: none; /* Keeps names natural */
+        letter-spacing: 0;
+    }
+
+    .goh-title {
+        color: var(--accent-glow);
+        font-weight: 800;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .goh-bio {
+        font-size: 0.95rem;
+        color: var(--text-dim);
+        line-height: 1.5;
+    }
+
+        /* Prize Pool Styling */
+        .prize-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 20px;
+            align-items: end;
+            margin-top: 40px;
+        }
+
+        .prize-card {
+            background: var(--block-bg);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .prize-card.champion {
+            background: var(--ycl-black);
+            color: white;
+            padding: 50px 30px;
+            border: 2px solid var(--ycl-yellow);
+            transform: scale(1.05);
+        }
+
+        .prize-card.champion h3 { color: var(--ycl-yellow); }
+        .prize-card.champion .prize-amount { color: white; font-size: 3rem; }
+
+        .prize-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .prize-amount {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-bright);
+            margin: 10px 0;
+        }
+
+        .prize-items {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            line-height: 2;
+        }
+
+        @media (max-width: 768px) {
+            .prize-grid { grid-template-columns: 1fr; }
+            .prize-card.champion { transform: scale(1); }
+        }
+
+        /* Newsletter Split Section */
+        .newsletter-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .accent-bar { height: 6px; width: 150px; display: flex; margin-bottom: 20px; }
+        .bar-seg { flex: 1; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; }
+        .form-group input, textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; }
+
+        .cta-button { 
+            background: #022537; color: rgb(251, 221, 68); padding: 18px 40px; text-decoration: none; 
+            font-weight: 900; text-transform: uppercase; display: inline-block; transition: 0.3s; border: none; cursor: pointer;
+            border-radius: 5px;
+        }
+        .cta-button:hover { background: var(--ycl-yellow); color: var(--ycl-black); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div style="text-align: center;">
+        <span class="badge">Healthier SG × Innovation</span>
+        <h1>NHG Youth Lab 2026</h1>
+        <p style="font-size: 1.3rem; max-width: 750px; margin: 0 auto;">Building the next generation of healthcare leaders through clinical rigor and youth-led creativity.</p>
+    </div>
+
+    <hr><div style="text-align: center; margin-top: 60px;">
+        <span class="badge">The Clock is Ticking</span>
+        <h2>Hackathon Begins In:</h2>
+        <div class="countdown-container" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Mins</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Secs</span>
+            </div>
+        </div>
+    </div>
+
+    <hr><div style="text-align: center; margin-top: 80px;">
+        <span class="badge">Rewards & Recognition</span>
+        <h2>The Prize Pool</h2>
+    </div>
+
+    <div class="prize-grid">
+        <div class="prize-card">
+            <span class="prize-icon" style="color: #94A3B8;"><i class="fas fa-medal"></i></span>
+            <h3>Runner Up</h3>
+            <span class="prize-amount">$200</span>
+        </div>
+
+        <div class="prize-card champion">
+            <span class="prize-icon" style="color: var(--ycl-yellow);"><i class="fas fa-crown"></i></span>
+            <h3>Grand Champion</h3>
+            <span class="prize-amount">$300</span>
+            <ul class="prize-items">
+            </ul>
+        </div>
+
+        <div class="prize-card">
+            <span class="prize-icon" style="color: #CD7F32;"><i class="fas fa-medal"></i></span>
+            <h3>Second Runner Up</h3>
+            <span class="prize-amount">$100</span>
+        </div>
+    </div>
+
+    <hr>
+<div class="description">
+    <h2>NHG YOUTH LAB 2026</h2>
+    <p>
+        Welcome to <strong>NHG Youth Lab 2026</strong> Hackathon, where innovation meets public health. This year is our first time holding this hackathon, where we are bringing together youths aged 18 to 28 across the nation to tackle the modern <strong>youth health</strong> crisis. 
+    </p>
+    <p>
+        In partnership with the <strong>National Healthcare Group (NHG)</strong>, this hackathon provides the tools, mentorship, and training needed to build the next generation of youth changemakers. This hackathon involves deep youth interaction with their local communities to identify pressing needs and engineer meaningful solutions. 
+    </p>
+    <p>
+        Participants are required to craft a problem statement out of the theme of <strong>youth health crisis</strong>. Through their identified problem statement, participants identify root causes and develop solutions to address such root causes. Scores will be given out based on three criterias: crafting of problem statement and how connected root causes are to the problem statement; quality and innovativeness of the solution; and feasibility of solution. You can find further details in the <strong>bottom of the page</strong>.</p>
+        <p></p>
+</div>
+
+    <hr><h2>Event Rundown</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <span class="timeline-date">Day 1: June 15 | Ideation</span>
+            <h3>Kickoff & Problem Scoping</h3>
+            <p>Registration starts at 0830hrs. Join clinical mentors from NHG to understand pressing youth health gaps. Formation of teams and deep-dive into deep brainstorming sessions and come up with a problem statement and solution idea.</p>
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">Day 2: June 16 | Prototyping</span>
+            <h3>Build & Validate</h3>
+            <p>Intensive rapid prototyping. Access to UI/UX workshops and direct feedback sessions with healthcare mentors to refine your solution's  feasibility and appearance.</p>
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">Day 3: June 17 | Final Pitch</span>
+            <h3>Presentation</h3>
+            <p>Final polishing of prototypes. Teams will pitch to a panel of judges from NYC, NHG, and industry professionals. Award ceremony and networking dinner to follow.</p>
+        </div>
+    </div>
+
+    <hr><h2>Strategic Partners</h2>
+    <div class="partner-grid">
+        <div class="partner-card">
+            <div class="logo-box"><img src="https://duckduckgo.com/i/4ce2892c2f33fb05.png" alt="NHG"></div>
+            <div>
+                <h4 style="margin:0">National Healthcare Group</h4>
+                <p style="font-size: 0.9rem; margin: 5px 0 0;">Clinical Mentorship & Feedback</p>
+            </div>
+        </div>
+        <div class="partner-card">
+            <div class="logo-box"><img src="https://isomer-user-content.by.gov.sg/139/218fed0b-dfd3-408b-921d-22eee54dce86/NYC_2025_Logo_RGB.png" alt="NYC"></div>
+            <div>
+                <h4 style="margin:0">National Youth Council</h4>
+                <p style="font-size: 0.9rem; margin: 5px 0 0;">Community Partner</p>
+            </div>
+        </div>
+    </div>
+
+    <hr><div class="newsletter-split">
+        <div>
+            <div class="accent-bar">
+                <div class="bar-seg" style="background: #E5243B;"></div>
+                <div class="bar-seg" style="background: #FFD200;"></div>
+                <div class="bar-seg" style="background: #009D48;"></div>
+                <div class="bar-seg" style="background: #0284C7;"></div>
+            </div>
+            <h3>Join NHG Youth Lab 2026 Hackathon</h3>
+            <p>Win up to $300 in cash and prizes, with products such as a Logitech MX 4 wireless mouse.</p>
+        </div>
+        <div style="text-align: center; background: #f8fafc; padding: 40px; border-radius: 12px;">         
+            <a href="https://forms.gle/CbXMrSMSxaMpMroB9" class="cta-button">Register for NHG Youth Lab</a>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 80px;">
+        <span class="badge">Distinguished Guests</span>
+        <h2>Guests of Honor</h2>
+    </div>
+
+    <div class="goh-grid">
+        <div class="goh-card">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQHlsPDZOGw7_w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1668388733413?e=1770854400&v=beta&t=LVeMGqjx5E5NQa2hDaUs51dZa_3JUa6X7B1Dn-ZYa3o" alt="GOH 1" class="goh-image">
+            <h3>Dr. Eric Sng</h3>
+            <span class="goh-title">Director, Youth Mental Health</span>
+            <p class="goh-bio">A pioneer in youth mental health and working under SHIN Children and Youth Services, Dr. Eric Sng has deep understanding in youth development and social services.</p>
+        </div>
+
+        <div class="goh-card">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQEnvzY4pK7omA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724853889009?e=1770854400&v=beta&t=U1_nKgYGsP5ZO6j7Mwsebq8Obl6UulbdiZLYgyqGQNk" alt="GOH 2" class="goh-image">
+            <h3>Mr. Damon Goh Jian liang</h3>
+            <span class="goh-title">Executive Director at Canossaville</span>
+            <p class="goh-bio">Overseeing national health policy, Mr. Tan focuses on empowering youth-led startups to solve community health challenges.</p>
+        </div>
+    </div>
+</div>  
+<script>
+    const targetDate = new Date("June 15, 2026 09:00:00").getTime();
+
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "<h3>HACKATHON IS LIVE!</h3>";
+        }
+    }, 1000);
+</script>
+</body>
+</html>
